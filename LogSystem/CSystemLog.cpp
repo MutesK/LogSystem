@@ -45,7 +45,7 @@ void CSystemLog::Log(WCHAR *szType, en_LOG_LEVEL LogLevel, WCHAR *szStringFormat
 	// 파일 이름 설정
 	FILE *fp;
 	WCHAR FileName[50];
-	StringCchPrintf(FileName, 50, L"%s%d%2d_%s.txt", _SaveDirectory, Time->wYear, Time->wDay, szType);
+	StringCchPrintf(FileName, 50, L"%s%d%02d_%s.txt", _SaveDirectory, Time->wYear, Time->wDay, szType);
 
 	WCHAR Data[dfLOGMSGLEN_MAX];
 
@@ -102,7 +102,7 @@ void CSystemLog::LogHex(WCHAR *szType, en_LOG_LEVEL LogLevel, WCHAR *szLog, BYTE
 
 	FILE *fp;
 	WCHAR FileName[50];
-	StringCchPrintf(FileName, 50, L"%s%d%2d_%s.txt", _SaveDirectory, Time->wYear, Time->wDay, szType);
+	StringCchPrintf(FileName, 50, L"%s%d%02d_%s.txt", _SaveDirectory, Time->wYear, Time->wDay, szType);
 
 	WCHAR Data[dfLOGMSGLEN_MAX];
 	

@@ -19,6 +19,8 @@ Tip)
 #include <iostream>
 #include <strsafe.h>
 
+class CSystemLog;
+
 enum en_LOG_LEVEL
 {
 	LOG_DEBUG = 0,
@@ -29,6 +31,10 @@ enum en_LOG_LEVEL
 
 #define dfLOGMSGLEN_MAX 256
 
+#define SYSLOG_SET(LOGLEVEL) CSystemLog::GetInstance()->SetLogLevel(LOGLEVEL)
+#define SYSLOG_DIRECTROYSET(DIRECTORY) CSystemLog::GetInstance()->SetLogDirectory(DIRECTORY)
+#define SYSLOG(TYPE, LOGLEVEL, fmt, ... )		CSystemLog::GetInstance()->Log(TYPE, LOGLEVEL, fmt, ##__VA_ARGS__ )
+#define SYSLOGHEX(TYPE, LOGLEVEL, SZLOG, DATA, DATALEN)   CSystemLog::GetInstance()->LogHex(TYPE, LOGLEVEL, SZLOG, DATA, DATALEN)
 
 class CSystemLog
 {
@@ -36,7 +42,6 @@ private:
 	CSystemLog(en_LOG_LEVEL LogLevel);
 	~CSystemLog();
 	
-
 public:
 
 	//------------------------------------------------------
